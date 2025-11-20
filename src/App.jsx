@@ -1,41 +1,46 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './App.css'
-import React from 'react';
-import { Button, Flex } from 'antd';
+import React, { useState } from 'react';
+import { DownloadOutlined } from '@ant-design/icons';
+import { Input, Button, Divider, Flex, Radio, Modal  } from 'antd';
+
 
 
 
 function App() {
-  const [count, setCount] = useState(0)
+const [inputText, setInputText] = useState('');
+function handleInputChange(e) {
+    setInputText(e.target.value);
+  }
+   const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
+    setInputText('');
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
 
   return (
-    <>
       <div>
-         <Button type="dashed">Dashed Button</Button>
+         <Flex gap={16} align="start">
+      <Input value={inputText} onChange={handleInputChange} />
+       <Button type="primary" onClick={showModal}>Показать в модальном окне</Button>
+    </Flex>
 
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite +++ React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Modal
+        closable={{ 'aria-label': 'Custom Close Button' }}
+        open={isModalOpen}
+        onOk={handleOk}
+        onCancel={handleCancel}
+      >
+        <p>{inputText}</p>
+      </Modal>
+       </div>
   )
 }
-
+         
 export default App
