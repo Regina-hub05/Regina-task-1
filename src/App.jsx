@@ -1,16 +1,18 @@
 
-import React, { useState } from 'react';
 
-function Counter() {
-  const [count, setCount] = useState(0);
+import React, { useState } from 'react';
+import Counter from './Counter';
+import Timer from './Timer';
+
+function App() {
+  
 
   return (
     <div style={{ textAlign: 'center', marginTop: '50px' }}>
-      <button onClick={() => setCount(count - 1)}>-1</button>
-      <span style={{ margin: '0 20px', fontSize: '24px' }}>{count}</span>
-      <button onClick={() => setCount(count + 1)}>+1</button>
+      {/* <Counter /> */}
+      <Timer />
     </div>
   );
 }
 
-export default Counter;
+export default App;
