@@ -8,12 +8,18 @@ function Timer() {
   
 
     const [list, setList] = useState([]);
+     const handleClick = () => {
+      const now = new Date();
+    const time = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
+    setList([...list, time]);
+  };
  
 
   return (
     <div>
+       <button onClick={handleClick}>Now</button>
     <div>
-      <button>Now</button>
+     
     </div>
 
     
