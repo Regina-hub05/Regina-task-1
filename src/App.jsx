@@ -1,43 +1,16 @@
 
 import React, { useState } from 'react';
-import { Input, Button, Flex, Modal, Layout } from 'antd';
 
-function App() {
-  
-  const [inputText, setInputText] = useState('');
-  function handleInputChange(e) {
-    setInputText(e.target.value);
-  }
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-  const handleOk = () => {
-    setIsModalOpen(false);
-    setInputText('');
-  };
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
+function Counter() {
+  const [count, setCount] = useState(0);
 
   return (
-<div>
-    <Flex gap={16} align="start">
-      <Input value={inputText} onChange={handleInputChange} />
-       <Button type="primary" onClick={showModal}>Показать в модальном окне</Button>
-    </Flex>
-
-    <Modal
-        closable={{ 'aria-label': 'Custom Close Button' }}
-        open={isModalOpen}
-        onOk={handleOk}
-        onCancel={handleCancel}
-      >
-        <p>{inputText}</p>
-      </Modal>
-      </div>
-  )
+    <div style={{ textAlign: 'center', marginTop: '50px' }}>
+      <button onClick={() => setCount(count - 1)}>-1</button>
+      <span style={{ margin: '0 20px', fontSize: '24px' }}>{count}</span>
+      <button onClick={() => setCount(count + 1)}>+1</button>
+    </div>
+  );
 }
 
-export default App
+export default Counter;
