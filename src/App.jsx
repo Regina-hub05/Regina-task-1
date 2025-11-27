@@ -1,18 +1,15 @@
 
-import './App.css'
 import React, { useState } from 'react';
-import { DownloadOutlined } from '@ant-design/icons';
-import { Input, Button, Divider, Flex, Radio, Modal  } from 'antd';
-
-
-
+import { Input, Button, Flex, Modal, Layout } from 'antd';
 
 function App() {
-const [inputText, setInputText] = useState('');
-function handleInputChange(e) {
+  
+  const [inputText, setInputText] = useState('');
+  function handleInputChange(e) {
     setInputText(e.target.value);
   }
-   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);
   };
@@ -25,8 +22,8 @@ function handleInputChange(e) {
   };
 
   return (
-      <div>
-         <Flex gap={16} align="start">
+<div>
+    <Flex gap={16} align="start">
       <Input value={inputText} onChange={handleInputChange} />
        <Button type="primary" onClick={showModal}>Показать в модальном окне</Button>
     </Flex>
@@ -39,8 +36,8 @@ function handleInputChange(e) {
       >
         <p>{inputText}</p>
       </Modal>
-       </div>
+      </div>
   )
 }
-         
+
 export default App
