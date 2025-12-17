@@ -1,20 +1,32 @@
 
 
 import React, { useState } from 'react';
-function App() {  
-  const [text, setText] = useState('Привет!'); 
+function App() {
+  const colors = ['red', 'green', 'blue']; 
   
-  const changeText = () => {
-    if (text === 'Привет!') {
-      setText('Пока!');
-    } else {
-      setText('Привет!');
+  const [colorIndex, setColorIndex] = useState(0); 
+
+  const changeColor = () => {    
+    let nextIndex = colorIndex + 1;   
+    
+    if (nextIndex > 2) {
+      nextIndex = 0;
     }
-  };  
+     setColorIndex(nextIndex);
+  };
+  
   return (
-    <div>    
-      <h1>{text}</h1>
-      <button onClick={changeText}>Изменить текст</button>
+    <div style={{ padding: '50px' }}>
+      
+      <div style={{
+        width: '200px',
+        height: '200px',
+        background: colors[colorIndex],
+        marginBottom: '20px'
+      }}></div>
+      
+      
+      <button onClick={changeColor}>Сменить цвет</button>
     </div>
   );
 }
