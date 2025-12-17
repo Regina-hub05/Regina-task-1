@@ -3,23 +3,26 @@
 import React, { useState } from 'react';
 
 function App() {  
-  const [plusCount, setPlusCount] = useState(0);
-  const [minusCount, setMinusCount] = useState(0); 
+  const [history, setHistory] = useState([]); 
   
-  const handlePlus = () => {
-    setPlusCount(plusCount + 1);
-  }; 
-  
-  const handleMinus = () => {
-    setMinusCount(minusCount + 1);
+  const addPlus = () => {
+    setHistory([...history, '+1']);
+  };
+   
+  const addMinus = () => {
+    setHistory([...history, '-1']);
   };
   
   return (
-    <div style={{ padding: '30px' }}>    
-      <div>+ нажали: {plusCount}</div>
-      <div>- нажали: {minusCount}</div>
-       <button onClick={handlePlus} style={{ marginRight: '10px' }}>+</button>
-      <button onClick={handleMinus}>-</button>
+    <div style={{ padding: '30px' }}>
+    
+      <button onClick={addPlus} style={{ marginRight: '10px' }}>+</button>
+      <button onClick={addMinus}>-</button>
+       <div style={{ marginTop: '20px' }}>
+        {history.map((item, index) => (
+          <div key={index}>{item}</div>
+        ))}
+      </div>
     </div>
   );
 }
