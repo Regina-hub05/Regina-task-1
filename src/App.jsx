@@ -1,31 +1,35 @@
 
 
 import React, { useState } from 'react';
-
-function App() {
-  const emojis = ['😀', '😐', '😢']; 
+function App() {  
+  const [items, setItems] = useState([]); 
   
-  const [emojiIndex, setEmojiIndex] = useState(0);   
-  const changeEmoji = () => {    
-    let nextIndex = emojiIndex + 1;   
-    
-    if (nextIndex > 2) {
-      nextIndex = 0;
-       }
-    
-    setEmojiIndex(nextIndex);
+  const [counter, setCounter] = useState(1); 
+  
+  const addItem = () => {
+    setItems([...items, `Элемент ${counter}`]);
+    setCounter(counter + 1);
+  }; 
+  
+  const clearList = () => {
+    setItems([]);
+    setCounter(1);
   };
-  
   return (
-    <div style={{ padding: '50px', textAlign: 'center' }}>
-    
-      <div style={{ fontSize: '100px', marginBottom: '30px' }}>
-        {emojis[emojiIndex]}
-      </div>     
-    
-      <button onClick={changeEmoji}>Сменить настроение</button>
+    <div style={{ padding: '30px' }}>    
+      <button onClick={addItem} style={{ marginRight: '10px' }}>
+        Добавить элемент
+      </button>
+      <button onClick={clearList}>
+        Очистить список
+      </button>     
+      
+      <ul style={{ marginTop: '20px' }}>
+        {items.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
     </div>
   );
 }
-
 export default App;
