@@ -1,34 +1,21 @@
 
 
 import React, { useState } from 'react';
+
 function App() {  
-  const [items, setItems] = useState([]); 
+  const [number, setNumber] = useState(0); 
   
-  const [counter, setCounter] = useState(1); 
-  
-  const addItem = () => {
-    setItems([...items, `Элемент ${counter}`]);
-    setCounter(counter + 1);
-  }; 
-  
-  const clearList = () => {
-    setItems([]);
-    setCounter(1);
+  const generate = () => {
+    const random = Math.floor(Math.random() * 101); 
+    setNumber(random);
   };
+  
   return (
-    <div style={{ padding: '30px' }}>    
-      <button onClick={addItem} style={{ marginRight: '10px' }}>
-        Добавить элемент
-      </button>
-      <button onClick={clearList}>
-        Очистить список
-      </button>     
+   <div style={{ padding: '30px' }}>
+    
+      <h1>{number}</h1>     
       
-      <ul style={{ marginTop: '20px' }}>
-        {items.map((item, index) => (
-          <li key={index}>{item}</li>
-        ))}
-      </ul>
+      <button onClick={generate}>Случайное число</button>
     </div>
   );
 }
