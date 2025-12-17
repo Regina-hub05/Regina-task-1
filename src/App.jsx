@@ -2,34 +2,26 @@
 
 import React, { useState } from 'react';
 
-function App() {  
-  const [count, setCount] = useState(0);  
+function App() {
   
-  const [inputValue, setInputValue] = useState('1');  
+  const fruits = ["яблоко", "груша", "банан", "киви"];
   
-  const add = () => {
-    const num = Number(inputValue);
-    setCount(count + num);
-  };  
   
-  const subtract = () => {
-    const num = Number(inputValue); 
-    setCount(count - num);
+  const [word, setWord] = useState('');
+  
+  
+  const randomWord = () => {
+    const randomNumber = Math.floor(Math.random() * 4); 
+    setWord(fruits[randomNumber]); 
   };
-   return (
+  
+  return (
     <div style={{ padding: '30px' }}>
-      
-      <h1>{count}</h1>     
     
-      <button onClick={add} style={{ marginRight: '10px' }}>+</button>
-      <button onClick={subtract} style={{ marginRight: '10px' }}>-</button>      
-      
-      <input 
-        type="number" 
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-      />
+      <h1>{word}</h1>
+       <button onClick={randomWord}>Случайный фрукт</button>
     </div>
   );
 }
+
 export default App;
