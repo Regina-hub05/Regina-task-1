@@ -1,33 +1,31 @@
 
 
 import React, { useState } from 'react';
-function App() {
-  const colors = ['red', 'green', 'blue']; 
-  
-  const [colorIndex, setColorIndex] = useState(0); 
 
-  const changeColor = () => {    
-    let nextIndex = colorIndex + 1;   
+function App() {
+  const emojis = ['😀', '😐', '😢']; 
+  
+  const [emojiIndex, setEmojiIndex] = useState(0);   
+  const changeEmoji = () => {    
+    let nextIndex = emojiIndex + 1;   
     
     if (nextIndex > 2) {
       nextIndex = 0;
-    }
-     setColorIndex(nextIndex);
+       }
+    
+    setEmojiIndex(nextIndex);
   };
   
   return (
-    <div style={{ padding: '50px' }}>
-      
-      <div style={{
-        width: '200px',
-        height: '200px',
-        background: colors[colorIndex],
-        marginBottom: '20px'
-      }}></div>
-      
-      
-      <button onClick={changeColor}>Сменить цвет</button>
+    <div style={{ padding: '50px', textAlign: 'center' }}>
+    
+      <div style={{ fontSize: '100px', marginBottom: '30px' }}>
+        {emojis[emojiIndex]}
+      </div>     
+    
+      <button onClick={changeEmoji}>Сменить настроение</button>
     </div>
   );
 }
+
 export default App;
