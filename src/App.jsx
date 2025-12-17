@@ -3,21 +3,33 @@
 import React, { useState } from 'react';
 
 function App() {  
-  const [color, setColor] = useState('red');
+  const [count, setCount] = useState(0);  
   
-  return (
+  const [inputValue, setInputValue] = useState('1');  
+  
+  const add = () => {
+    const num = Number(inputValue);
+    setCount(count + num);
+  };  
+  
+  const subtract = () => {
+    const num = Number(inputValue); 
+    setCount(count - num);
+  };
+   return (
     <div style={{ padding: '30px' }}>
-          <div style={{
-        width: '200px',
-        height: '200px',
-        background: color,
-        marginBottom: '20px'
-      }}></div>     
       
-      <button onClick={() => setColor('red')} style={{ marginRight: '10px' }}>red</button>
-      <button onClick={() => setColor('green')} style={{ marginRight: '10px' }}>green</button>
-      <button onClick={() => setColor('blue')}>blue</button>
+      <h1>{count}</h1>     
+    
+      <button onClick={add} style={{ marginRight: '10px' }}>+</button>
+      <button onClick={subtract} style={{ marginRight: '10px' }}>-</button>      
+      
+      <input 
+        type="number" 
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+      />
     </div>
-     );
+  );
 }
 export default App;
