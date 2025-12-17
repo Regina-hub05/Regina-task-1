@@ -3,28 +3,21 @@
 import React, { useState } from 'react';
 
 function App() {  
-  const [history, setHistory] = useState([]); 
-  
-  const addPlus = () => {
-    setHistory([...history, '+1']);
-  };
-   
-  const addMinus = () => {
-    setHistory([...history, '-1']);
-  };
+  const [color, setColor] = useState('red');
   
   return (
     <div style={{ padding: '30px' }}>
-    
-      <button onClick={addPlus} style={{ marginRight: '10px' }}>+</button>
-      <button onClick={addMinus}>-</button>
-       <div style={{ marginTop: '20px' }}>
-        {history.map((item, index) => (
-          <div key={index}>{item}</div>
-        ))}
-      </div>
+          <div style={{
+        width: '200px',
+        height: '200px',
+        background: color,
+        marginBottom: '20px'
+      }}></div>     
+      
+      <button onClick={() => setColor('red')} style={{ marginRight: '10px' }}>red</button>
+      <button onClick={() => setColor('green')} style={{ marginRight: '10px' }}>green</button>
+      <button onClick={() => setColor('blue')}>blue</button>
     </div>
-  );
+     );
 }
-
 export default App;
