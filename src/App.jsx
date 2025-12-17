@@ -1,23 +1,20 @@
 
 
 import React, { useState } from 'react';
-
-function App() {
+function App() {  
+  const [text, setText] = useState('Привет!'); 
   
-  const [isOn, setIsOn] = useState(false);
-  
-  
-  const toggle = () => {
-    setIsOn(!isOn);
-  };
-  
+  const changeText = () => {
+    if (text === 'Привет!') {
+      setText('Пока!');
+    } else {
+      setText('Привет!');
+    }
+  };  
   return (
-    <div>
-      
-      <h1>{isOn ? "Свет включен" : "Свет выключен"}</h1>
-      
-     
-      <button onClick={toggle}>Вкл/Выкл</button>
+    <div>    
+      <h1>{text}</h1>
+      <button onClick={changeText}>Изменить текст</button>
     </div>
   );
 }
